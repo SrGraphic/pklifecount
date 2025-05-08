@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Vidas Pokémon</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .player-card {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      padding: 20px;
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 120px;
+      margin-right: 20px;
+    }
+
+    .profile img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ddd;
+    }
+
+    .player-name {
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .hearts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      flex-grow: 1;
+    }
+
+    .heart {
+      width: 35px;
+      height: 35px;
+      margin-left: 10px;
+      background-image: url('addheart.png');
+      background-size: cover;
+    }
+
+    .heart.inactive {
+      filter: grayscale(100%);
+      opacity: 0.4;
+    }
+  </style>
+</head>
+<body>
+  <h1>Contador de Vidas - Pokémon Sol/Luna</h1>
+
+  <div class="player-card" data-player="0">
+    <div class="profile">
+      <img src="perfil1.png" alt="Jugador 1">
+      <div class="player-name">Jugador 1</div>
+    </div>
+    <div class="hearts"></div>
+  </div>
+
+  <div class="player-card" data-player="1">
+    <div class="profile">
+      <img src="perfil2.png" alt="Jugador 2">
+      <div class="player-name">Jugador 2</div>
+    </div>
+    <div class="hearts"></div>
+  </div>
+
+  <div class="player-card" data-player="2">
+    <div class="profile">
+      <img src="perfil3.png" alt="Jugador 3">
+      <div class="player-name">Jugador 3</div>
+    </div>
+    <div class="hearts"></div>
+  </div>
+
+  <script>
+    // Número de vidas por jugador
+    const vidas = [20, 20, 20]; // Modifica aquí para cada jugador
+
+    const cards = document.querySelectorAll('.player-card');
+
+    cards.forEach((card, index) => {
+      const heartsContainer = card.querySelector('.hearts');
+      const vidasJugador = vidas[index];
+
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        if (i >= vidasJugador) heart.classList.add('inactive');
+        heartsContainer.appendChild(heart);
+      }
+    });
+  </script>
+</body>
+</html>
